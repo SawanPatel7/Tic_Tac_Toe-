@@ -10,8 +10,6 @@ const wonText = document.querySelector(".won-text");
 const Replaybnt = document.querySelector(".result button");
 
 
-in minimax branch;
-
 window.onload = () => {// once the window loaded
     for (let i = 0; i < allbox.length; i++) {
         allbox[i].setAttribute("onclick", "clickbox(this)");
