@@ -23,7 +23,9 @@ body{
   border-radius: 5px;;
   max-width: 400px;
   width: 100%;
-  /* display: none ; */
+}
+.select-box .select-level span{
+  font-weight: 600;
 }
 .select-box.hide{
   opacity: 0;
