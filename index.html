@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic_Tac_Toe</title>
+    <link rel="icon" href="tic-tac-toe.png">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
+
 <body>
     <!-- starting menu -->
-     <div class="select-box">
-         <header>Tic Tac Toe</header>
-         <div class="content">
-             <div class="title">Select which player you want to be?</div>
-             <div class="option">
-                 <button class="playerX">player (X)</button>
-                 <button class="playerO">player (O)</button>
-             </div>
-         </div>
-     </div>
+    <div class="select-box">
+        <header>Tic Tac Toe</header>
+        <div class="select-level">
+            <div class="title">Check box for hard level !</div>
+            <label class="switch" >
+                <input id="level" type="checkbox">
+                <span class="slider round"></span>
+              </label>
+        </div>
+        <div class="content">
+            <div class="title">Select which player you want to be?</div>
+            <div class="option">
+                <button class="playerX">player (X)</button>
+                <button class="playerO">player (O)</button>
+            </div>
+        </div>
+    </div>
 
-     <!-- play board -->
+    <!-- play board -->
 
-     <div class="play-board">
-         <div class="detail">
-             <div class="mov">
+    <div class="play-board">
+        <div class="detail">
+            <div class="mov">
                 <span class="Xturn">X's Turn</span>
                 <span class="Oturn">O's Turn</span>
                 <div class="slider"></div>
-         </div>
-         </div>
+            </div>
+        </div>
         <div class="box">
             <section>
                 <span class="box-1 0"></span>
@@ -48,16 +58,18 @@
                 <span class="box-9 8"></span>
             </section>
         </div>
-     </div>
-     
-     <!-- Result box -->
-     <div class="result">
-         <div class="won-text">Player <span>X</span> won the game !</div>
-         <button class="replay">Replay</button>
-     </div>
+    </div>
+
+    <!-- Result box -->
+    <div class="result">
+        <div class="won-text">Player <span>X</span> won the game !</div>
+        <button class="replay">Replay</button>
+        <button class="reload">Reload</button>
+    </div>
 
 
-     <script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
