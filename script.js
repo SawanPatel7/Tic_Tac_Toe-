@@ -144,7 +144,6 @@ function checkDraw() {
 function selectWinner() {
     if (checkWinner(playerSign)) {
         rungame = false;
-        // game(rungame);
         setTimeout(() => {
             ResultBox.classList.add("show");
             Playboard.classList.remove("show");
@@ -153,7 +152,6 @@ function selectWinner() {
     } else {
         if (checkDraw()) {
             rungame = false;
-            // game(rungame);
             setTimeout(() => {
                 ResultBox.classList.add("show");
                 Playboard.classList.remove("show");
@@ -240,7 +238,7 @@ replayBnt.addEventListener('click', () => {
         }
     }
     for (let i = 0; i < allbox.length; i++) {
-        allbox[i].style.pointerEvents = "auto";
+        allbox[i].style.pointerEvents = '';
         allbox[i].innerHTML = "";
     }
     rungame = true;
