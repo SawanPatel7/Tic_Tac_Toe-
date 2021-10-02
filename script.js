@@ -87,7 +87,7 @@ function game(rungame) {   // computer move
         let level = document.getElementById('level').checked;
         let curPosition;
         if (level) {
-            curPosition = bestmove();
+            curPosition = bestmove(-Infinity, Infinity);
         } else {
             curPosition = array[Math.floor(Math.random() * array.length)];
         }
@@ -166,63 +166,79 @@ function selectWinner() {
 
 let Ai = "O";
 let Player = "X";
-
-function bestmove() {
+let cnt = 0;
+function bestmove(alpha, beta) {
+    cnt=0;
     Ai = "O";
     Player = "X";
     if (Move.classList.contains("PlayerO")) {
         Ai = "X";
         Player = "O";
     }
-    let maxScore = -10000;
+    let maxScore = -Infinity;
     let bestPosition;
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
             if (boardbox[i][j] == "") {
                 boardbox[i][j] = Ai;
-                let curScore = minSearch();
+                let curScore = minSearch(alpha, beta);
+                boardbox[i][j] = "";
                 if (curScore > maxScore) {
                     maxScore = curScore;
                     bestPosition = 3 * i + j;
                 }
-                boardbox[i][j] = "";
+                alpha = Math.max(alpha, maxScore);
+                if (alpha >= beta) {
+                    return bestPosition;
+                }
             }
         }
     }
+    // console.log(cnt);
     return bestPosition;
 }
 
 
-function minSearch() {
+function minSearch(alpha, beta) {
+    cnt++;
     if (checkWinner(Ai)) return 10;
     if (checkWinner(Player)) return -10;
     if (checkDraw()) return 0;
-    let minScore = 10000;
+    let minScore = Infinity;
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
             if (boardbox[i][j] == "") {
                 boardbox[i][j] = Player;
-                let curScore = maxSearch();
-                minScore = Math.min(minScore, curScore);
+                let curScore = maxSearch(alpha, beta);
                 boardbox[i][j] = "";
+                minScore = Math.min(minScore, curScore);
+                beta = Math.min(beta, minScore);
+                if (alpha >= beta) {
+                    return minScore;
+                }
             }
         }
     }
     return minScore;
 }
 
-function maxSearch() {
+function maxSearch(alpha, beta) {
+    cnt++;
     if (checkWinner(Ai)) return 10;
     if (checkWinner(Player)) return -10;
     if (checkDraw()) return 0;
-    let maxScore = -10000;
+    let maxScore = -Infinity;
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
             if (boardbox[i][j] == "") {
                 boardbox[i][j] = Ai;
-                let curScore = minSearch();
-                maxScore = Math.max(curScore, maxScore);
+                let curScore = minSearch(alpha, beta);
                 boardbox[i][j] = "";
+                maxScore = Math.max(curScore, maxScore);
+                alpha = Math.max(alpha, maxScore);
+                if (alpha >= beta) {
+                    return maxScore;
+                }
             }
         }
     }
