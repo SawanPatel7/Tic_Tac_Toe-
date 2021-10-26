@@ -161,14 +161,17 @@ function selectWinner() {
     }
 }
 
-/////////////minimax algorithm section
+
+/////minimax algorithm section
 
 
 let Ai = "O";
 let Player = "X";
 let cnt = 0;
+
+//for selecting best move.
 function bestmove(alpha, beta) {
-    cnt=0;
+    cnt = 0;
     Ai = "O";
     Player = "X";
     if (Move.classList.contains("PlayerO")) {
@@ -198,7 +201,7 @@ function bestmove(alpha, beta) {
     return bestPosition;
 }
 
-
+// for player optimal move.
 function minSearch(alpha, beta) {
     cnt++;
     if (checkWinner(Ai)) return 10;
@@ -222,6 +225,7 @@ function minSearch(alpha, beta) {
     return minScore;
 }
 
+//for ai optimal move.
 function maxSearch(alpha, beta) {
     cnt++;
     if (checkWinner(Ai)) return 10;
@@ -261,6 +265,10 @@ replayBnt.addEventListener('click', () => {
     Playboard.style.pointerEvents = "auto";
     ResultBox.classList.remove("show");
     Playboard.classList.add("show");
+    let randomMove = Math.floor(Math.random() * 2);
+    if (randomMove == 1) {
+        game(rungame);
+    }
 })
 
 
